@@ -10,10 +10,10 @@ class IchannelObserver {
         unordered_set<Isubscriber*> subscribers;
     public:
         virtual void notify(string title)=0;
-        virtual void subscribe(Isubscriber* subscriber) {
+        void subscribe(Isubscriber* subscriber) {
             subscribers.insert(subscriber);
         }
-        virtual void unsubscribe(Isubscriber* subscriber) {
+        void unsubscribe(Isubscriber* subscriber) {
             subscribers.erase(subscriber);
         }
         unordered_set<Isubscriber*> getSubscribers() {
