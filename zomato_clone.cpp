@@ -109,6 +109,7 @@ class user {
             return address;
         }
         void printDetails() {
+            cout<< "User Details:-------\n";
             cout << "User ID: " << id << ", Name: " << name << ", Address: " << address << endl;
         }
 };
@@ -272,5 +273,12 @@ int main() {
     paymentservice* paymentMethod = new CreditCardPayment();
     order* ord1 = factory->createOrder(1, *u1, *userCart, paymentMethod, "Delivery");
     client->placeOrder(ord1);
+
+    //clean up
+    delete r1;
+    delete r2;
+    delete u1;
+    delete userCart;
+    delete client;
     return 0;
 }
