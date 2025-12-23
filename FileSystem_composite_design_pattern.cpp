@@ -96,29 +96,22 @@ class Folder : public IFileSystem {
 
 int main() {
     cout << "File System Composite Design Pattern Example" << endl;
-    IFileSystem* file1 = new File("file1.txt", 100);
-    IFileSystem* file2 = new File("file2.txt", 200);
-    IFileSystem* folder1 = new Folder("Documents");
-    IFileSystem* folder2 = new Folder("Pictures");
     IFileSystem* rootFolder = new Folder("Root");
-    IFileSystem* file3 = new File("image1.png", 500);
-    IFileSystem* file4 = new File("image2.png", 700);
-    IFileSystem* file5 = new File("notes.txt", 150);
-    IFileSystem* folder3 = new Folder("Work");
-    IFileSystem* file6 = new File("report.docx", 300);
-    IFileSystem* file7 = new File("summary.pdf", 400);
-    IFileSystem* folder4 = new Folder("Personal");
-    rootFolder->add(folder1);
-    rootFolder->add(folder4);
-    rootFolder->add(file1);
-    folder4->add(file2);
-    folder4->add(folder2);
-    folder1->add(file7);
-    folder1->add(folder3);
-    folder2->add(file3);
-    folder2->add(file4);
-    folder3->add(file5);
-    folder3->add(file6);
+    IFileSystem* documents = new Folder("Documents");
+    IFileSystem* picture_dir = new Folder("Pictures");
+    IFileSystem* work_dir = new Folder("Work");
+    IFileSystem* personal_dir = new Folder("Personal");
+    rootFolder->add(documents);
+    rootFolder->add(personal_dir);
+    rootFolder->add(new File("file1.txt", 100));
+    personal_dir->add(new File("file2.txt", 200));
+    personal_dir->add(picture_dir);
+    documents->add(new File("summary.pdf", 400));
+    documents->add(work_dir);
+    picture_dir->add(new File("image1.png", 500));
+    picture_dir->add(new File("image2.png", 700));
+    work_dir->add(new File("notes.txt", 150));
+    work_dir->add(new File("report.docx", 300));
     rootFolder->ls();
     cout << "----------------------------------------" << endl;
     rootFolder->openAll();
@@ -176,17 +169,10 @@ int main() {
         cout<<endl;
     }
 
-    delete file1;
-    delete file2;
-    delete file3;
-    delete file4;
-    delete file5;
-    delete file6;
-    delete file7;
-    delete folder1;
-    delete folder2;
-    delete folder3;
-    delete folder4;
+    delete documents;
+    delete picture_dir;
+    delete work_dir;
+    delete personal_dir;
     delete rootFolder;
 
     return 0;
