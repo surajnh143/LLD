@@ -158,10 +158,10 @@ int main() {
                             if(currentFolder)
                                 currentFolder = currentFolder->cd("..");
                         }
+                    }
                 }
             }
         }
-    }
     }
     if(currentFolder) {
         cout<<"Final Folder: ";
