@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 
+//Implementer Hierarchy(LLP)
 class Engine {
     public:
         virtual void start() = 0;
@@ -38,6 +39,7 @@ class ElectricEngine : public Engine {
         }
 };
 
+//Abstraction Hierarchy(HLP)
 class Car {
     protected:
         Engine* engine;
